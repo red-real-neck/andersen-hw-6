@@ -9,6 +9,15 @@ class Car {
     #isStarted = false;
     #mileage = 0;
 
+    constructor(brand = null, model = null, yearOfManufacturing = null, maxSpeed = null, maxFuelVolume = null, fuelConsumption = null) {
+        this.brand = brand;
+        this.model = model;
+        this.yearOfManufacturing = yearOfManufacturing;
+        this.maxSpeed = maxSpeed;
+        this.maxFuelVolume = maxFuelVolume;
+        this.fuelConsumption = fuelConsumption;
+    }
+
     get brand() {
         if (this.#brand === null) {
             throw new Error('brand not set');
@@ -16,6 +25,9 @@ class Car {
         return this.#brand;
     }
     set brand(brand) {
+        if (brand === null && this.#brand === null) {
+            return;
+        }
         if (typeof brand !== 'string') {
             throw new Error('string expected');
         } else if (brand.length > 50) {
@@ -32,6 +44,9 @@ class Car {
         return this.#model;
     }
     set model(model) {
+        if (model === null && this.#model === null) {
+            return;
+        }
         if (typeof model !== 'string') {
             throw new Error('string expected');
         } else if (model.length > 50) {
@@ -48,6 +63,9 @@ class Car {
         return this.#yearOfManufacturing;
     }
     set yearOfManufacturing(year) {
+        if (year === null && this.#yearOfManufacturing === null) {
+            return;
+        }
         if (typeof year !== 'number') {
             throw new Error('number expected');
         } else if (year < 1900 || year > new Date().getFullYear()) {
@@ -64,6 +82,9 @@ class Car {
         return this.#maxSpeed;
     }
     set maxSpeed(speed) {
+        if (speed === null && this.#maxSpeed === null) {
+            return;
+        }
         if (typeof speed !== 'number') {
             throw new Error('number expected');
         } else if (speed < 100 || speed > 300) {
@@ -80,6 +101,9 @@ class Car {
         return this.#maxFuelVolume;
     }
     set maxFuelVolume(value) {
+        if (value === null && this.#maxFuelVolume === null) {
+            return;
+        }
         if (typeof value !== 'number') {
             throw new Error('number expected');
         } else if (value < 5 || value > 20) {
@@ -96,6 +120,9 @@ class Car {
         return this.#fuelConsumption;
     }
     set fuelConsumption(value) {
+        if (value === null && this.#fuelConsumption === null) {
+            return;
+        }
         if (typeof value !== 'number') {
             throw new Error('number expected');
         } else if (value <= 0) {
